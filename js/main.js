@@ -19,10 +19,12 @@ const testimonials = [
 function loadTestimonials() {
   const grid = document.getElementById('testimonialsGrid');
   if (!grid) return;
+
   testimonials.forEach((t, i) => {
     const imgId = (i % 70) + 1;
     const card = document.createElement('div');
     card.className = 'testimonial-card reveal';
+    card.style.transitionDelay = `${Math.min(i * 100, 1200)}ms`;
     card.innerHTML = `
       <div class="testimonial-stars">★★★★★</div>
       <p class="testimonial-text">"${t.text}"</p>
@@ -48,10 +50,19 @@ function initPortfolioFilter() {
       filters.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.dataset.filter;
-      items.forEach(item => {
+
+      items.forEach((item, i) => {
         if (filter === 'all' || item.dataset.category === filter) {
           item.style.display = 'block';
-          item.style.animation = 'fadeInUp 0.6s ease';
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(30px)';
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0)';
+            }, i * 80);
+          });
         } else {
           item.style.display = 'none';
         }
@@ -78,11 +89,11 @@ function initContactForm() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('formName').value;
-    const email = document.getElementById('formEmail').value;
-    const phone = document.getElementById('formPhone').value;
+    const name = document.getElementById('formName').value.trim();
+    const email = document.getElementById('formEmail').value.trim();
+    const phone = document.getElementById('formPhone').value.trim();
     const type = document.getElementById('formWebsiteType').value;
-    const message = document.getElementById('formMessage').value;
+    const message = document.getElementById('formMessage').value.trim();
 
     if (!name || !email || !phone || !type) {
       alert('Please fill in all required fields.');
@@ -90,7 +101,7 @@ function initContactForm() {
     }
 
     const whatsappMsg = encodeURIComponent(
-      `Hi Digital Pixel Studio! 👋\n\nI'm interested in your services.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nWebsite Type: ${type}\nMessage: ${message}`
+      `Hi Digital Pixel Studio! \n\nI'm interested in your services.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nWebsite Type: ${type}\nMessage: ${message}`
     );
 
     const emailBody = encodeURIComponent(
@@ -108,13 +119,19 @@ function initContactForm() {
     }
 
     form.reset();
-    alert('Thank you! We will get back to you within 24 hours.');
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    loadTestimonials();
+    initPortfolioFilter();
+    initFAQ();
+    initContactForm();
+  });
+} else {
   loadTestimonials();
   initPortfolioFilter();
   initFAQ();
   initContactForm();
-});
+}
