@@ -1,0 +1,136 @@
+============================
+DIGITAL PIXEL STUDIO
+WEBSITE BUILD INSTRUCTIONS
+============================
+
+Copy and paste this entire block to rebuild the exact same
+site with a different company name + details.
+
+------------------------------------------------------------
+BEGIN INSTRUCTIONS
+------------------------------------------------------------
+
+Build and deploy a premium web development agency website
+with these exact specifications:
+
+----- COMPANY DETAILS -----
+Company Name: [Your Company Name]
+Mobile: [Your Number]
+WhatsApp: [Same or Different]
+Email: [Your Email]
+Address: [Your Address]
+Years in Business: [X] Years
+Clients Served: [X]+
+Tagline: [e.g. Bangalore's Premier Web Development Agency]
+
+----- THEME -----
+Theme: Neon LED / Cyberpunk
+3 Colors: Red (#ff0040), Black (#0a0a0a), Gold (#ffd700)
+Premium fonts: Orbitron (headings), Rajdhani (body), Exo 2 (alt)
+Effects: Breathing glow, color shifting, scan line, floating
+  orbs, cyber grid lines, particle float, staggered scroll
+  reveals (120ms delay per sibling), counter animation,
+  3D hero tilt on desktop
+
+----- LOGO -----
+Create a professional SVG logo icon (geometric pixel/design
+mark in red + gold) + text in same font size:
+"Digital" in white, "Pixel" in gold, "Studio" in gray
+All words same size, no uppercase distortion, clean and
+professional. Apply to navbar AND footer on all pages.
+
+----- WHATSAPP BUTTON -----
+Position: fixed, bottom-right
+Use: env(safe-area-inset-bottom) and env(safe-area-inset-right)
+to prevent clipping on notched phones
+Size: 56px default → 48px at 480px → 42px at 380px
+Never require horizontal scroll to see it.
+Must overlap page content naturally (position fixed).
+Pulsing green glow animation.
+Link to: https://wa.me/[YourNumber]
+
+----- HAMBURGER (3 DOTS / 3 LINES) -----
+Always visible on touch devices.
+Use media query: @media (hover: none) and (pointer: coarse)
+Right-side drawer menu with backdrop blur.
+Body scroll locked when menu open.
+Closes on link click.
+
+----- PREVENT HORIZONTAL SCROLL -----
+html { overflow-x: hidden; width: 100%; }
+body { overflow-x: hidden; }
+.hero-bg { overflow: hidden; }
+All cyber/background lines must be width:100%, never 200%.
+Font sizes use clamp() for seamless scaling.
+env(safe-area-inset) for notched devices.
+
+----- SECTIONS REQUIRED -----
+1. Navigation (fixed, transparent → scrolled with blur)
+2. Hero (full screen, animated bg, headline, CTA buttons,
+   stats counter: Clients Served, Projects, Years, Team)
+3. Services (6 cards: Web Dev, E-Com, Mobile, SEO, UI/UX, Cloud)
+4. Portfolio (filterable: All / Websites / E-Com / Apps / Branding)
+5. Process (5 steps: Discovery → Strategy → Design → Dev → Launch)
+6. Pricing (3 tiers with feature lists)
+7. Testimonials (15 reviews loaded from JS array)
+8. FAQ (accordion, 7 questions)
+9. Contact (2 columns: info + form with website type dropdown)
+10. Google Map (dark theme, address overlay)
+11. Footer (4 columns: brand + quick links + services + contact)
+
+----- CONTACT FORM -----
+Fields: Full Name*, Phone*, Email*, Website Type* (dropdown),
+  Project Details
+Dropdown options: Business Website, E-Commerce Store, Portfolio,
+  Landing Page, Blog, Web Application, Mobile App, Redesign, Other
+On submit: confirm() dialog → OK=WhatsApp, Cancel=Email
+WhatsApp: wa.me with pre-filled message
+Email: mailto: with subject + body
+
+----- IMAGES -----
+Portfolio: Unsplash source URLs with w=600&h=375&fit=crop
+Testimonials: Pravatar URLs (i.pravatar.cc/100?img=N)
+All images loading="lazy"
+Preconnect to Unsplash and Google Fonts
+No emojis as avatars — use real photos
+
+----- ANIMATIONS (120fps optimized) -----
+All animations use: will-change, cubic-bezier easing,
+  requestAnimationFrame, GPU acceleration
+Scroll reveal: IntersectionObserver with 120ms staggered
+  transitionDelay per sibling
+Breathing: on all section titles, hero headings, stats,
+  logo elements, "Convert" text
+Color shift: on hero stats numbers (red↔gold)
+Particles: 15 elements floating up from bottom
+Scan line: horizontal bar sweeping top→bottom
+Floating orbs: 3 blurred circles
+Cyber lines: 2 thin sliding lines
+Counter: eased counting up on scroll
+prefers-reduced-motion: respect system setting
+Touch devices: no hover transforms, use active: scale(0.98)
+
+----- AUTH SYSTEM -----
+login.html: Register (Name, Email, Phone, Password) + Sign In
+dashboard.html: Projects table, stats cards, logout
+Use localStorage for storage
+Redirect to login if not authenticated
+
+----- PERFORMANCE -----
+preconnect + dns-prefetch for external domains
+Font Awesome from CDN
+No build step needed (static HTML/CSS/JS)
+requestIdleCallback for non-critical init
+Scroll listener throttled
+
+----- DEPLOYMENT -----
+Push to GitHub public repo
+Deploy to Netlify via zip upload or git integration
+Netlify handles HTTPS + CDN
+
+------------------------------------------------------------
+END INSTRUCTIONS
+------------------------------------------------------------
+
+To use: Paste this into AI, replace company details,
+and tell it to build + deploy to GitHub and Netlify.
