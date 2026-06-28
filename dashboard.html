@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Digital Pixel Studio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-text"><span class="neon-text">DIGITAL</span> <span class="gold">PIXEL</span></span>
+      <span class="neon-dot" style="background:var(--neon-red);box-shadow:0 0 10px var(--neon-red);"></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><span id="dashUserEmail" style="color:var(--gold);font-family:var(--font-alt);font-size:0.9rem;"></span></li>
+      <li><button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="dashboard">
+  <div class="container">
+    <div class="dashboard-header">
+      <h2>Dashboard</h2>
+      <span style="font-family:var(--font-alt);color:var(--text-secondary);">Welcome, <span id="dashName" class="gold" style="font-weight:600;"></span></span>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="dash-card">
+        <h4>Active Projects</h4>
+        <div class="number" style="color:var(--neon-red);">2</div>
+      </div>
+      <div class="dash-card">
+        <h4>Completed Projects</h4>
+        <div class="number" style="color:var(--gold);">5</div>
+      </div>
+      <div class="dash-card">
+        <h4>Support Tickets</h4>
+        <div class="number" style="color:var(--text-primary);">1</div>
+      </div>
+      <div class="dash-card">
+        <h4>Next Milestone</h4>
+        <div class="number" style="font-size:1rem;font-family:var(--font-alt);color:var(--text-secondary);">Design Review<br><span style="font-size:0.8rem;">In 3 days</span></div>
+      </div>
+    </div>
+
+    <div class="dash-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Deadline</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>E-Commerce Store</td>
+            <td>E-Commerce</td>
+            <td style="color:var(--gold);">In Progress</td>
+            <td>Aug 15, 2024</td>
+            <td style="color:var(--neon-red);">65%</td>
+          </tr>
+          <tr>
+            <td>Business Website</td>
+            <td>Web Development</td>
+            <td style="color:#25D366;">Completed</td>
+            <td>Jun 20, 2024</td>
+            <td style="color:#25D366;">100%</td>
+          </tr>
+          <tr>
+            <td>Mobile App UI</td>
+            <td>UI/UX Design</td>
+            <td style="color:var(--gold);">Review</td>
+            <td>Jul 30, 2024</td>
+            <td style="color:var(--gold);">85%</td>
+          </tr>
+          <tr>
+            <td>SEO Campaign</td>
+            <td>Digital Marketing</td>
+            <td style="color:var(--neon-red);">In Progress</td>
+            <td>Sep 01, 2024</td>
+            <td style="color:var(--neon-red);">40%</td>
+          </tr>
+          <tr>
+            <td>Brand Identity</td>
+            <td>Branding</td>
+            <td style="color:#25D366;">Completed</td>
+            <td>May 10, 2024</td>
+            <td style="color:#25D366;">100%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:40px;text-align:center;">
+      <a href="index.html#contact" class="btn btn-primary"><i class="fas fa-plus"></i> Start New Project</a>
+      <a href="index.html" class="btn btn-outline" style="margin-left:12px;"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<script src="js/auth.js"></script>
+</body>
+</html>
