@@ -100,12 +100,20 @@ body {
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  position: relative;
 }
 
 .logo-svg {
-  width: 36px;
-  height: 36px;
+  width: clamp(38px, 4.5vw, 44px);
+  height: clamp(38px, 4.5vw, 44px);
   flex-shrink: 0;
+  filter: drop-shadow(0 0 6px var(--gold-glow));
+  animation: logoGlow 4s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px var(--gold-glow)); }
+  50% { filter: drop-shadow(0 0 12px var(--gold-glow)) drop-shadow(0 0 24px var(--gold)); }
 }
 
 .logo-text-group {
@@ -113,8 +121,8 @@ body {
   align-items: baseline;
   gap: 0;
   font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-  font-weight: 700;
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   white-space: nowrap;
@@ -129,17 +137,16 @@ body {
 }
 
 .logo-text-group .logo-studio {
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 2px;
   margin-left: 4px;
-  animation: logoStudioShift 5s ease-in-out infinite;
-  text-shadow: 0 0 10px var(--neon-red);
+  animation: logoStudioShift 4s ease-in-out infinite;
+  text-shadow: 0 0 8px var(--gold-glow);
 }
 
 @keyframes logoStudioShift {
-  0%, 100% { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red), 0 0 25px var(--neon-red); }
-  33% { color: var(--gold); text-shadow: 0 0 10px var(--gold), 0 0 25px var(--gold); }
-  66% { color: #ffffff; text-shadow: 0 0 10px #ffffff, 0 0 25px rgba(255,255,255,0.3); }
+  0%, 100% { color: var(--gold); text-shadow: 0 0 8px var(--gold-glow), 0 0 15px var(--gold); }
+  50% { color: var(--gold-dim); text-shadow: 0 0 12px var(--gold-glow), 0 0 30px var(--gold); }
 }
 
 /* === NEON TEXT EFFECTS === */
