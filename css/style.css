@@ -88,12 +88,45 @@ body {
 .text-center { text-align: center; }
 .text-center .section-subtitle { margin: 0 auto; }
 
-.logo-studio {
-  font-size: 0.65em;
+/* === PROFESSIONAL LOGO === */
+.logo-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-svg {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.logo-text-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.logo-text-group .logo-digital {
+  color: var(--text-primary);
+}
+
+.logo-text-group .logo-pixel {
+  color: var(--gold);
+}
+
+.logo-text-group .logo-studio {
   color: var(--text-muted);
-  font-weight: 300;
-  letter-spacing: 3px;
-  margin-left: 2px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-left: 4px;
 }
 
 /* === NEON TEXT EFFECTS === */
@@ -121,8 +154,32 @@ body {
 }
 
 @keyframes breathe {
-  0%, 100% { opacity: 0.85; text-shadow: 0 0 5px currentColor; }
-  50% { opacity: 1; text-shadow: 0 0 25px currentColor, 0 0 50px currentColor; }
+  0%, 100% { opacity: 0.8; text-shadow: 0 0 5px currentColor; }
+  50% { opacity: 1; text-shadow: 0 0 25px currentColor, 0 0 55px currentColor; }
+}
+
+.breathing-glow {
+  animation: breatheGlow 5s ease-in-out infinite;
+  will-change: opacity, box-shadow;
+}
+
+@keyframes breatheGlow {
+  0%, 100% { box-shadow: 0 0 10px var(--neon-red-glow); }
+  50% { box-shadow: 0 0 40px var(--neon-red-glow), 0 0 80px var(--neon-red-glow); }
+}
+
+.breathing-gold {
+  animation: breatheGold 4.5s ease-in-out infinite;
+  will-change: opacity, text-shadow;
+}
+
+@keyframes breatheGold {
+  0%, 100% { opacity: 0.85; text-shadow: 0 0 5px var(--gold); }
+  50% { opacity: 1; text-shadow: 0 0 25px var(--gold), 0 0 50px var(--gold); }
+}
+
+.breathing-slow {
+  animation: breathe 6s ease-in-out infinite;
 }
 
 /* === COLOR CHANGING - smooth 120fps === */
@@ -394,6 +451,125 @@ body {
   10% { opacity: 0.8; }
   90% { opacity: 0.6; }
   100% { transform: translateY(-100px) scale(1); opacity: 0; }
+}
+
+/* === SCANNING LINE === */
+.hero-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-red), transparent);
+  box-shadow: 0 0 20px var(--neon-red), 0 0 60px var(--neon-red);
+  animation: scanlineMove 4s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+@keyframes scanlineMove {
+  0% { top: -2px; opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* === FLOATING ORBS === */
+.hero-orbs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.15;
+  animation: orbFloat 12s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.orb-1 {
+  width: 300px;
+  height: 300px;
+  background: var(--neon-red);
+  top: -100px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--gold);
+  bottom: -150px;
+  right: -100px;
+  animation-delay: 4s;
+  animation-duration: 15s;
+}
+
+.orb-3 {
+  width: 250px;
+  height: 250px;
+  background: var(--neon-red);
+  top: 50%;
+  left: 50%;
+  animation-delay: 8s;
+  animation-duration: 10s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* === CYBER LINES === */
+.hero-cyber-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.cyber-line {
+  position: absolute;
+  background: var(--neon-red);
+  opacity: 0.07;
+}
+
+.cyber-line.h-line {
+  width: 200%;
+  height: 1px;
+  top: 30%;
+  left: -50%;
+  animation: cyberLineH 8s linear infinite;
+  box-shadow: 0 0 10px var(--neon-red);
+}
+
+.cyber-line.v-line {
+  height: 200%;
+  width: 1px;
+  left: 60%;
+  top: -50%;
+  animation: cyberLineV 10s linear infinite;
+  box-shadow: 0 0 10px var(--gold);
+  background: var(--gold);
+}
+
+@keyframes cyberLineH {
+  0% { transform: translateX(-30%) rotate(0deg); }
+  100% { transform: translateX(30%) rotate(1deg); }
+}
+
+@keyframes cyberLineV {
+  0% { transform: translateY(-30%) rotate(0deg); }
+  100% { transform: translateY(30%) rotate(-1deg); }
 }
 
 .hero-content {
@@ -1234,10 +1410,10 @@ body {
 /* === WHATSAPP FLOATING BUTTON === */
 .whatsapp-btn {
   position: fixed;
-  bottom: clamp(16px, 2.5vw, 24px);
-  right: clamp(16px, 2.5vw, 24px);
-  width: clamp(48px, 6vw, 56px);
-  height: clamp(48px, 6vw, 56px);
+  bottom: max(16px, env(safe-area-inset-bottom, 16px));
+  right: max(16px, env(safe-area-inset-right, 16px));
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: #25D366;
   border: none;
@@ -1246,7 +1422,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(1.3rem, 1.8vw, 1.5rem);
+  font-size: 1.5rem;
   box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: whatsappPulse 3s ease-in-out infinite;
@@ -1554,7 +1730,7 @@ body {
   .map-overlay { position: relative; background: var(--black-2); max-width: 100%; }
 }
 
-/* Mobile (480px and below) */
+/* Small Mobile (480px and below) */
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
 
@@ -1571,6 +1747,25 @@ body {
   .dashboard-header { flex-direction: column; align-items: flex-start; }
 
   .testimonials-grid { grid-template-columns: 1fr; }
+
+  .whatsapp-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+    bottom: 12px;
+    right: 12px;
+  }
+}
+
+/* Extra Small Mobile (380px and below) */
+@media (max-width: 380px) {
+  .whatsapp-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+    bottom: 8px;
+    right: 8px;
+  }
 }
 
 /* Touch device optimizations */
