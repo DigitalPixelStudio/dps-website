@@ -55,7 +55,7 @@ body {
   padding: 0 24px;
 }
 
-.section { padding: 120px 0; position: relative; }
+.section { padding: clamp(60px, 8vw, 100px) 0; position: relative; }
 
 .section-label {
   font-family: var(--font-heading);
@@ -125,10 +125,11 @@ body {
 }
 
 .logo-text-group .logo-studio {
-  color: var(--text-muted);
-  font-weight: 400;
+  color: var(--neon-red);
+  font-weight: 500;
   letter-spacing: 2px;
   margin-left: 4px;
+  animation: breathe 4s ease-in-out infinite;
 }
 
 /* === NEON TEXT EFFECTS === */
@@ -389,7 +390,7 @@ body {
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding-top: 80px;
+  padding: 100px 0 60px;
 }
 
 .hero-bg {
@@ -667,8 +668,64 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* === SECTION BACKGROUND EFFECTS === */
+.section-bg-fx {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-bg-fx .fx-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.08;
+  animation: orbFloat 15s ease-in-out infinite;
+}
+
+.section-bg-fx .fx-orb-1 {
+  width: 350px;
+  height: 350px;
+  background: var(--neon-red);
+  top: -100px;
+  right: -80px;
+  animation-delay: 0s;
+}
+
+.section-bg-fx .fx-orb-2 {
+  width: 280px;
+  height: 280px;
+  background: var(--gold);
+  bottom: -120px;
+  left: -60px;
+  animation-delay: 5s;
+  animation-duration: 18s;
+}
+
+.section-bg-fx .fx-line {
+  position: absolute;
+  opacity: 0.04;
+}
+
+.section-bg-fx .fx-line-h {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-red), transparent);
+  top: 40%;
+  animation: cyberLineH 12s linear infinite;
+}
+
+.section-bg-fx .fx-line-v {
+  height: 100%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--gold), transparent);
+  left: 30%;
+  animation: cyberLineV 14s linear infinite;
+}
+
 /* === SERVICES SECTION === */
-.services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 24px;
@@ -1413,10 +1470,10 @@ body {
 /* === WHATSAPP FLOATING BUTTON === */
 .whatsapp-btn {
   position: fixed;
-  bottom: max(16px, env(safe-area-inset-bottom, 16px));
-  right: max(16px, env(safe-area-inset-right, 16px));
-  width: 56px;
-  height: 56px;
+  bottom: max(20px, env(safe-area-inset-bottom, 16px));
+  right: max(24px, env(safe-area-inset-right, 16px));
+  width: clamp(52px, 5vw, 68px);
+  height: clamp(52px, 5vw, 68px);
   border-radius: 50%;
   background: #25D366;
   border: none;
@@ -1425,7 +1482,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
   box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: whatsappPulse 3s ease-in-out infinite;
@@ -1752,22 +1809,22 @@ body {
   .testimonials-grid { grid-template-columns: 1fr; }
 
   .whatsapp-btn {
-    width: 48px;
-    height: 48px;
-    font-size: 1.3rem;
-    bottom: 12px;
-    right: 12px;
+    width: 52px;
+    height: 52px;
+    font-size: 1.4rem;
+    bottom: 14px;
+    right: 14px;
   }
 }
 
 /* Extra Small Mobile (380px and below) */
 @media (max-width: 380px) {
   .whatsapp-btn {
-    width: 42px;
-    height: 42px;
-    font-size: 1.1rem;
-    bottom: 8px;
-    right: 8px;
+    width: 46px;
+    height: 46px;
+    font-size: 1.2rem;
+    bottom: 10px;
+    right: 10px;
   }
 }
 
